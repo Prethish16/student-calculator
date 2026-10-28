@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-calculator
+  labels:
+    app: student-calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-calculator
+  template:
+    metadata:
+      labels:
+        app: student-calculator
+    spec:
+      containers:
+      - name: student-calculator
+        image: DOCKERHUB_USERNAME/student-calculator:GIT_COMMIT_SHA
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: IfNotPresent
